@@ -4,7 +4,17 @@ export function Tr(props){
             <th scope="row">1</th>
             <td><img width="100" src={props.item.img}/></td>
             <td>{props.item.title}</td>
-            <td>1</td>
+            <td className="count-change">
+                <span onClick={()=>{
+                    console.log("Уменьшаем кол-во товаров");
+                    props.changeCount(props.index, "-");
+                }}>-</span>
+                <span className="count-num">{props.item.count}</span>
+                <span onClick={()=>{
+                    console.log("Прибавляем товар")
+                    props.changeCount(props.index, "+");
+                }}>+</span>
+            </td>
             <td><button className="btn btn-danger" onClick={()=>{props.removeItemInCart(props.index)}}>Удалить</button></td>
         </tr>
     )
